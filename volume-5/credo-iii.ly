@@ -18,15 +18,30 @@ halfBar = {
   \breathe
 }
 
+% Voice leading lines are drawn as dashed glissandi
+voiceLineStyle = {
+  \override Glissando #'style = #'dashed-line
+  \override NoteColumn #'force-hshift = #0
+  \override NoteHead #'transparent = ##t
+}
+
+voiceLine =
+#(define-music-function
+  (parser location staffA staffB noteA noteB)
+  (string? string? ly:music? ly:music?)
+  #{
+    \change Staff = #staffA <>\glissando #noteA
+    \change Staff = #staffB #noteB
+  #})
+
 doubleBar   = { \bar "||" }
 forceBreak  = { \bar "" \break }
 shiftRight  = { \once \override NoteColumn #'force-hshift = #0.9 }
 shiftRightB = { \once \override NoteColumn #'force-hshift = #1.6 }
-staffDown   = { \change Staff = "down" }
-staffUp     = { \change Staff = "up"   }
 
 global = {
   \key d \major
+  \cadenzaOn
 }
 
 chantText = \lyricmode {
@@ -58,16 +73,14 @@ chantText = \lyricmode {
 }
 
 chantMusic = \relative c' {
-  \cadenzaOn
-
   %Measure 1
-  a'4 fs d g fs fs8( e d4) d \doubleBar
+  a'4 fs d g fs fs16( e d4) d \doubleBar
 
   %2
-  fs4*1/3( g4*2/3) fs4 a fs d e d \halfBar \forceBreak
+  fs16( g16*3) fs4 a fs d e d \halfBar \forceBreak
   d4 fs g a a a b a \halfBar
-  a a b b d cs8( a b4) b a \halfBar \forceBreak
-  a fs d g fs8( d e4) e d \doubleBar
+  a a b b d cs16( a b4) b a \halfBar \forceBreak
+  a fs d g fs16( d e4) e d \doubleBar
 
   %3
   a'4 a fs fs d d e \forceBreak
@@ -75,8 +88,8 @@ chantMusic = \relative c' {
   fs fs fs g e a a b b a \doubleBar \break
 
   %4
-  fs4 e g g fs8( d e4) d \quarterBar
-  fs4 fs a b a fs8( d e4) e d \doubleBar \break
+  fs4 e g g fs16( d e4) d \quarterBar
+  fs4 fs a b a fs16( d e4) e d \doubleBar \break
 
   %5
   a' a a fs d \quarterBar
@@ -85,34 +98,34 @@ chantMusic = \relative c' {
   cs a b a \doubleBar
 
   %6
-  fs fs e g fs8( d e4) d \quarterBar
+  fs fs e g fs16( d e4) d \quarterBar
   fs4 fs a a b a g a \halfBar \forceBreak
   b d cs a a b g a \doubleBar
 
   %7
   a4 a fs fs a b a \quarterBar \forceBreak
   d,4 d d d e fs g a \quarterBar
-  b cs d cs4*1/3( a4*2/3) b4 a \doubleBar \break
+  b cs d cs16( a16*3) b4 a \doubleBar \break
 
   %8
-  a4 fs fs d e d fs fs e fs a4*1/3( b4*2/3) a4 \quarterBar
+  a4 fs fs d e d fs fs e fs a16( b16*3) a4 \quarterBar
   b d cs a \forceBreak
   b b a \halfBar
   d, fs fs g g a \doubleBar
 
   %9
-  fs4 e8( g) fs( d e4) d d e fs g \forceBreak
-  a4*1/3( b4*2/3) a4 \quarterBar
+  fs4 e16( g16*3) fs16( d e4) d d e fs g \forceBreak
+  a16( b16*3) a4 \quarterBar
   a a a b g a fs \quarterBar
-  a fs d g fs8( d e4) e d \doubleBar \break
+  a fs d g fs16( d e4) e d \doubleBar \break
 
   %10
   a'4 a a b a a fs g a a \quarterBar
   d, e fs g e d \doubleBar \break
 
   %11
-  d4 fs a4*1/3( b4*2/3) cs4 d cs8( a b4) a \halfBar
-  a a a fs fs g fs8( d e4) d \doubleBar \break
+  d4 fs a16( b16*3) cs4 d cs16( a b4) a \halfBar
+  a a a fs fs g fs16( d e4) d \doubleBar \break
 
   %12
   a'4 a a fs fs d d e e fs e d \quarterBar
@@ -123,14 +136,14 @@ chantMusic = \relative c' {
   %13
   d'4 d b b d a a b b a \quarterBar
   d, fs a a b a \halfBar \forceBreak
-  a g a fs g e fs g fs4*1/3( d4*2/3) e4 d \doubleBar
+  a g a fs g e fs g fs16( d16*3) e4 d \doubleBar
 
   %14
   d4 fs a a fs \forceBreak
   g fs a \quarterBar
   b a d cs b a \quarterBar
   d, fs fs a a b a \halfBar \forceBreak
-  a a fs fs d g fs4*1/3( d4*2/3) e4 d \doubleBar
+  a a fs fs d g fs16( d16*3) e4 d \doubleBar
 
   %15
   a'4 a a fs fs \forceBreak
@@ -138,7 +151,7 @@ chantMusic = \relative c' {
   a' a a a a b g a a fs \doubleBar \break
 
   %16
-  a4 b cs d b d cs4*1/3( a4*2/3) b4 a \quarterBar
+  a4 b cs d b d cs16( a16*3) b4 a \quarterBar
   fs e fs a g fs e fs \forceBreak
   e d \doubleBar
 
@@ -146,33 +159,33 @@ chantMusic = \relative c' {
   a'4 a fs d a' a a a b a g fs g fs \doubleBar \break
 
   %18
-  d'4 cs4*1/3( b4*2/3) a4 fs b a fs g a \doubleBar
+  d'4 cs16( b16*3) a4 fs b a fs g a \doubleBar
 
   %19
-  a8(  fs d4) e8( e d4.)
-  d'8( cs a4) b8( b a4.)
-  fs4*1/3( g4*2/3)
-  a4*1/3( d,4*2/3)
-  e8( e d4) d \doubleBar
+  a16(  fs d4) e16( e d4.)
+  d'16( cs a4) b16( b a4.)
+  fs16( g16*3)
+  a16( d,16*3)
+  e16( e d4) d \doubleBar
 }
 
 altoMusic = \relative c' {
   %1
-  s2*4
+  s2*3 s2*3/4
 
   %2
   d2~ d2*3/2 s2
   d4~ d2 e2*3/2~ e2
-  fs g2*3/2 e2*3/2~ e4~
-  e d2*3/2~ d2 a
+  fs g2*3/2 e2*5/4~ e4~
+  e d2*3/2~ d2*3/4 a2
 
   %3
   e'2 d~ d2*3/2~ d2 \glissando e4 d~
   d2*3/2~ d2 e~ e~ e4
 
   %4
-  d2~ d~ d2*3/2~
-  d2 e2*3/2 d2 a
+  d2~ d~ d2*5/4~
+  d2 e2*3/2 d2*3/4 a2
 
   %5
   e'2*3/2 d2~
@@ -181,7 +194,7 @@ altoMusic = \relative c' {
   fs2~ fs
 
   %6
-  d2*2~ d2*3/2~
+  d2*2~ d2*5/4~
   d2 e d~ d
   fs~ fs2*3/2 e2~ e4
 
@@ -196,10 +209,10 @@ altoMusic = \relative c' {
   d4~ d2~ d e4
 
   %9
-  d2~ d2*3/2 d2*2 e2~
+  d2~ d2*5/4 d2*2 e2~
   e4 d2~  d e
   d2~ d~
-  d -\tweak Glissando.Y-offset #-0.6 \glissando e4
+  d2*3/4 -\tweak Glissando.Y-offset #-0.6 \glissando e4
   s4
 
   %10
@@ -207,8 +220,8 @@ altoMusic = \relative c' {
   d4~ d2*3/2 a2
 
   %11
-  s2*2 s4 e'2 e4
-  e2*3/2 d~ d2~ d4
+  s2*2 s4 e'2*3/4 e4
+  e2*3/2 d~ d2*3/4~ d4
 
   %12
   s4 e2 d~ d2*2~ d2~ d4
@@ -242,28 +255,28 @@ altoMusic = \relative c' {
   s4 fs2*1/2~ fs2~ fs d e4
 
   %19
-  d2( e4) d4.~
-  d2 e2*5/4
-  d2*1/2~ d a2~ a4
+  d2*3/4( e8) d4.~
+  d2*3/4 e2
+  d2*1/2~ d a2*3/4~ a4
 }
 
 tenorMusic = \relative c' {
   %1
-  s2*4
+  s2*3 s2*3/4
 
   %2
   a2~ a2*3/2~ a2~ \halfBar
   a4~ a2~ a2*3/2~ a2 \halfBar
-  d~ d2*3/2~ d2*3/2 cs4~ \halfBar
-  cs b2*3/2 a2 g4 fs
+  d~ d2*3/2~ d2*5/4 cs4~ \halfBar
+  cs b2*3/2 a2*3/4 g4 fs
 
   %3
   a2 b a2*3/2 g2 fs \quarterBar
   b2*3/2~ b2~ b d cs4
 
   %4
-  a2 g a2*3/2~ \quarterBar
-  a2~ a2*3/2~ a2 g4 fs4
+  a2 g a2*5/4~ \quarterBar
+  a2~ a2*3/2~ a2*3/4 g4 fs4
 
   %5
   a2*3/2~ a2 \quarterBar
@@ -271,7 +284,7 @@ tenorMusic = \relative c' {
   a2~ a2*3/2 d2 cs
 
   %6
-  b2*2 a2*3/2~ \quarterBar
+  b2*2 a2*5/4~ \quarterBar
   a2~ a fs e4 fs \halfBar
   a2 d2*3/2~ d2 cs4
 
@@ -286,17 +299,17 @@ tenorMusic = \relative c' {
   b4~ b2~ \shiftRightB b cs4
 
   %9
-  a2~ a2*3/2 b2*2 a2~ \quarterBar
+  a2~ a2*5/4 b2*2 a2~ \quarterBar
   a4 fs2 e fs~ \quarterBar
-  fs g a g4 fs
+  fs g a2*3/4 g4 fs
 
   %10
   d'2*3/2 cs2 b2*3/2 cs2 \quarterBar
   b4~ b2*3/2 g4 fs
 
   %11
-  d'2 e2*3/2 d2 cs4~ \halfBar
-  cs2*3/2 b a2*1/2 g4 fs
+  d'2 e2*3/2 d2*3/4 cs4~ \halfBar
+  cs2*3/2 b a2*1/4 g4 fs
 
   %12
   a4~ a2~ a g2*2 fs2 b4 \quarterBar
@@ -329,28 +342,28 @@ tenorMusic = \relative c' {
   s4 d2*1/2~ d2~ d b cs4
 
   %19
-  fs,2 g2*1/2 fs2*3/4~
-  fs2 a2*5/4
-  b2*1/2 a g2 fs4
+  fs,2*3/4 g2*1/4 fs2*3/4~
+  fs2*3/4 a2
+  b2*1/2 a g2*3/4 fs4
 }
 
 bassMusic = \relative c {
   %1
-  s2*4
+  s2*3 s2*3/4
 
   %2
   d2 cs2*3/2 b2~
   b4 d2~ d2*3/2 cs2
-  d e2*3/2 a2*3/2~ a4~
-  a b2*3/2 d,2~ d
+  d e2*3/2 a2*5/4~ a4~
+  a b2*3/2 d,2*3/4~ d2
 
   %3
   cs2 b~ b2*3/2~ b2~ b
   d2*3/2 e2 a~ a~ a4
 
   %4
-  d,2 b~ b2*3/2
-  d2 cs2*3/2 d2~ d
+  d,2 b~ b2*5/4
+  d2 cs2*3/2 d2*3/4~ d2
 
   %5
   cs2*3/2 b2~
@@ -359,7 +372,7 @@ bassMusic = \relative c {
   d2 fs
 
   %6
-  b,2*2 d2*3/2~
+  b,2*2 d2*5/4~
   d2 cs b~ b
   d~ d2*3/2 a'2~ a4
 
@@ -375,17 +388,17 @@ bassMusic = \relative c {
   s2 s4 a2~ a4
 
   %9
-  d,2 b2*3/2~ b2*2 cs2~
+  d,2 b2*5/4~ b2*2 cs2~
   cs4 d2~ d cs
-  b~ b d2~ d2
+  b~ b d2*3/4~ d2
 
   %10
   s2*4 a'2~
   a4 g2*3/2 d2
 
   %11
-  b'2 a2*3/2~ a2~ a4
-  fs2*3/2 \shiftRight b d,2*1/2~ d2
+  b'2 a2*3/2~ a2*3/4~ a4
+  fs2*3/2 \shiftRight b d,2*1/4~ d2
 
   %12
   s4 cs2 b~ b2*2~ b2~ b4
@@ -405,7 +418,8 @@ bassMusic = \relative c {
   cs,2 d~ d~ d2*1/2~ d2
 
   %15
-  s4 cs2 d~ d4~ d2~ d4
+  s4 cs2 d~  \set tieWaitForNote = ##t
+  s4~ d2~ d4 \set tieWaitForNote = ##f
   cs2*3/2 b2~ b~ b~ b4
 
   %16
@@ -419,69 +433,68 @@ bassMusic = \relative c {
   d4~ d2*1/2 fs2 g a~ a4
 
   %19
-  d,2~ d2*1/2~ d2*3/4
-  b2 cs2*5/4
-  d2*1/2~ d~ d2~ d4
+  d,2*3/4~ d2*1/4~ d2*3/4
+  b2*3/4 cs2
+  d2*1/2~ d~ d2*3/4~ d4
 }
 
 voiceLines = \relative c' {
-  \override Glissando #'style = #'dashed-line
-  \override NoteColumn #'force-hshift = #0
-  \override NoteHead #'transparent = ##t
+  \voiceLineStyle
 
   %1-2
-  s2*18
-  \staffDown a2 \glissando \staffUp a2
+  s2*17 s4
+  \voiceLine "down" "up" a2*3/4 a2
 
   %3-4
-  s2*16 s4
-  \staffDown a2 \glissando \staffUp a2
+  s2*16 s8
+  \voiceLine "down" "up" a2*3/4 a2
 
   %5-7
-  s2*30 s4
-  \staffDown e'2*1/2 \glissando \staffUp e2
+  s2*30 s8
+  \voiceLine "down" "up" e'2*1/2 e2
 
   %8-10
-  s2*31
-  \staffDown g,2*3/2 \glissando g4
+  s2*30 s4
+  \voiceLine "down" "down" g,2*3/2 g4
   s4
 
   %11
   s2
-  \staffDown e'2*3/2 \glissando \staffUp e2
-  s2*4 s4
+  \voiceLine "down" "up" e'2*3/2 e2*3/4
+  s2*4 s8
 
   %12
   s2*14
-  \staffDown a,2 \glissando \staffUp a2
+  \voiceLine "down" "up" a,2 a2
 
   %13
   s2*12
-  \staffDown a2*1/2 \glissando \staffUp a2
+  \voiceLine "down" "up" a2*1/2 a2
 
   %14
   s2*13 s4
-  \staffDown a2*1/2 \glissando \staffUp a2
+  \voiceLine "down" "up" a2*1/2 a2
 
   %15-16
   s2*13
-  \staffDown cs2 \glissando \staffUp cs2
+  \voiceLine "down" "up" cs2 cs2
   s2*4 s4
 
   %17-18
   s2*8 s4
-  \staffDown d2 \glissando \staffUp d2
+  \voiceLine "down" "up" d2 d2
   s4
 
   %19
-  s2*5
-  \staffDown a2*1/2 \glissando \staffUp a2
+  s2*4
+  \voiceLine "down" "up" a2*1/2 a2*3/4
 }
 
 \paper {
+  #(set-paper-size "letter")
   line-width    = 6.5\in
   top-margin    = 0.4\in
-  bottom-margin = 0.7\in
+  bottom-margin = 0.4\in
   markup-system-spacing #'padding = #2
   top-system-spacing    #'padding = #4
 
@@ -513,28 +526,23 @@ voiceLines = \relative c' {
 
     \new Staff = up <<
       \new Voice = "chant" {
-        \voiceOne
-        << \global \chantMusic >>
+        \voiceOne \global \chantMusic
       }
       \new Voice {
-        \voiceTwo
-        << \global \altoMusic >>
+        \voiceTwo \global \altoMusic
       }
     >>
 
     \new Staff = down <<
       \clef bass
       \new Voice {
-        \voiceOne
-        << \global \tenorMusic >>
+        \voiceOne \global \tenorMusic
       }
       \new Voice {
-        \voiceTwo
-        << \global \bassMusic >>
+        \voiceTwo \global \bassMusic
       }
       \new Voice {
-        \voiceThree
-        << \global \voiceLines >>
+        \voiceThree \global \voiceLines
       }
     >>
 
