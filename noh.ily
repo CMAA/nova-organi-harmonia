@@ -3,9 +3,10 @@
 %
 \version  "2.18.0"
 
-% Breathing marks borrowed from gregorian.ly
+% Chant division marks
 quarterBar = {
   \once \override BreathingSign.stencil = #ly:breathing-sign::divisio-minima
+  \once \override BreathingSign.thickness = #2.0
   \once \override BreathingSign.minimum-X-extent = #'(-1.0 . 0.0)
   \once \override BreathingSign.minimum-Y-extent = #'(-2.5 . 2.5)
 
@@ -14,6 +15,7 @@ quarterBar = {
 
 halfBar = {
   \once \override BreathingSign.stencil = #ly:breathing-sign::divisio-maior
+  \once \override BreathingSign.thickness = #2.0
   \once \override BreathingSign.Y-offset = #0
   \once \override BreathingSign.minimum-X-extent = #'(-1.0 . 0.0)
   \once \override BreathingSign.minimum-Y-extent = #'(-2.5 . 2.5)
@@ -21,9 +23,10 @@ halfBar = {
   \breathe
 }
 
-% Voice leading lines are drawn as dashed glissandi
+% Voice leading lines are drawn as dotted glissandi
 voiceLineStyle = {
-  \override Glissando #'style = #'dashed-line
+  \override Glissando #'style = #'dotted-line
+  \override Glissando #'thickness = #2.0
   \override NoteColumn #'force-hshift = #0
   \override NoteHead #'transparent = ##t
 }
@@ -36,6 +39,13 @@ voiceLine =
     \change Staff = #staffA <>\glissando #noteA
     \change Staff = #staffB #noteB
   #})
+
+allowVoiceLineBreak = {
+  \once \override Glissando.breakable = ##t
+  \once \override Glissando.after-line-breaking = ##t
+}
+
+offsetVoiceLineY = { \once \overrideProperty Glissando.Y-offset #0.2 }
 
 % Additional macros
 doubleBar   = { \bar "||" }
@@ -52,6 +62,7 @@ shiftRightB = { \once \override NoteColumn #'force-hshift = #1.6 }
     \remove "Time_signature_engraver"
     \omit Flag
     \omit Stem
+    \accidentalStyle forget
   }
   \context {
     \Lyrics

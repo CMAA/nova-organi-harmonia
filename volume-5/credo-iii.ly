@@ -23,7 +23,7 @@ chantText = \lyricmode {
   no -- bis: sub Pón -- ti -- o Pi -- lá -- to pas -- sus et se -- púl -- tus est.
   Et re -- sur -- ré -- xit tér -- ti -- a di -- e, se -- cún -- dum Scri -- ptú -- ras.
   Et a -- scén -- dit in cœ -- lum se -- det ad dé -- xte -- ram Pa -- tris.
-  Et í -- te -- rum ven -- tú -- rus est cum gló -- ri -- a, ju -- di -- cá -- re
+  Et í -- te -- rum ven -- tú -- rus est cum gló -- ri -- a ju -- di -- cá -- re
   vi -- vos et mór -- tu -- os: cu -- jus re -- gni non e -- rit fi -- nis.
   Et in Spí -- ri -- tum San -- ctum, Dó -- mi -- num, et vi -- vi -- fi -- cán -- tem:
   qui ex Pa -- tre Fi -- li -- ó -- que pro -- cé -- dit. Qui cum Pa -- tre et
@@ -204,7 +204,9 @@ altoMusic = \relative c' {
   e d~ d~ d2*1/2 a2
 
   %15
-  s4 e'2 d s2*2
+  s4 e'2
+  \allowVoiceLineBreak d
+  -\tweak Glissando.Y-offset #-1.0 \glissando s4 e4 s2
   e2*3/2 d2~ d cs d4
 
   %16
