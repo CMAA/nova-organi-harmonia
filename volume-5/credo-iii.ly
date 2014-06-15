@@ -384,7 +384,7 @@ bassMusic = \relative c {
 
   %15
   s4 cs2 d~  \set tieWaitForNote = ##t
-  s4~ d2~ d4 \set tieWaitForNote = ##f
+  s4~ d2~ d4 \unset tieWaitForNote
   cs2*3/2 b2~ b~ b~ b4
 
   %16
@@ -478,9 +478,8 @@ voiceLines = \relative c' {
 }
 
 \score {
-  \new StaffGroup <<
-    \set StaffGroup.instrumentName = "V."
-    \set StaffGroup.systemStartDelimiter = #'SystemStartBrace
+  \new GrandStaff <<
+    \set GrandStaff.instrumentName = "V."
 
     \new Staff = up <<
       \new Voice = "chant" {

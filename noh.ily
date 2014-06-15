@@ -3,7 +3,9 @@
 %
 \version  "2.18.0"
 
+%
 % Chant division marks
+%
 quarterBar = {
   \once \override BreathingSign.stencil = #ly:breathing-sign::divisio-minima
   \once \override BreathingSign.thickness = #2.0
@@ -23,7 +25,9 @@ halfBar = {
   \breathe
 }
 
+%
 % Voice leading lines are drawn as dotted glissandi
+%
 voiceLineStyle = {
   \override Glissando #'style = #'dotted-line
   \override Glissando #'thickness = #2.0
@@ -47,13 +51,40 @@ allowVoiceLineBreak = {
 
 offsetVoiceLineY = { \once \overrideProperty Glissando.Y-offset #0.2 }
 
+%
+% Functions to create groups of notes, connected with a slur
+%
+
+% Group of two notes (duration: quarter note)
+ga =
+#(define-music-function
+  (parser location pa pb) (ly:pitch? ly:pitch?)
+  #{ $pa 16( $pb 16*3) #})
+
+% Group of three notes (duration: dotted quarter note)
+gb =
+#(define-music-function
+  (parser location pa pb pc) (ly:pitch? ly:pitch? ly:pitch?)
+  #{ $pa 16( $pb $pc 4)) #})
+
+% Group of four notes (duration: dotted quarter note)
+gc =
+#(define-music-function
+  (parser location pa pb pc pd) (ly:pitch? ly:pitch? ly:pitch? ly:pitch?)
+  #{ $pa 16( $pb $pc $pd 16*3)) #})
+
+%
 % Additional macros
+%
+singleBar   = { \bar "|" }
 doubleBar   = { \bar "||" }
 forceBreak  = { \bar "" \break }
 shiftRight  = { \once \override NoteColumn #'force-hshift = #0.9 }
 shiftRightB = { \once \override NoteColumn #'force-hshift = #1.6 }
 
+%
 % Default layout
+%
 \layout {
   indent = 1.7\cm
   ragged-last = ##f
@@ -72,12 +103,10 @@ shiftRightB = { \once \override NoteColumn #'force-hshift = #1.6 }
   }
 }
 
+%
 % Default paper
+%
 \paper {
   #(set-paper-size "letter")
-  line-width    = 6.5\in
-  top-margin    = 0.4\in
-  bottom-margin = 0.4\in
-  markup-system-spacing #'padding = #2
-  top-system-spacing    #'padding = #4
+  line-width = 6.5\in
 }

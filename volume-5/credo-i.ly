@@ -436,9 +436,8 @@ voiceLines = \relative c' {
 }
 
 \score {
-  \new StaffGroup <<
-    \set StaffGroup.instrumentName = "IV."
-    \set StaffGroup.systemStartDelimiter = #'SystemStartBrace
+  \new GrandStaff <<
+    \set GrandStaff.instrumentName = "IV."
 
     \new Staff = up <<
       \new Voice = "chant" {
