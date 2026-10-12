@@ -148,6 +148,7 @@ s2*387/4
 
 \score{
   <<
+    \new Lyrics
     \new GrandStaff <<
       \set GrandStaff.autoBeaming = ##f
       \set GrandStaff.instrumentName = \markup \center-column {
@@ -176,7 +177,7 @@ s2*387/4
         }
       >>
     >>
-    \new Lyrics \lyricsto chant {
+    \context Lyrics \lyricsto chant {
       \chantText
     }
   >>

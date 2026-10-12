@@ -56,7 +56,8 @@ s2*15/4
 
 \score{
   <<
-    \new Lyrics
+    \new Lyrics = "chantLyricsA"
+    \new Lyrics = "chantLyricsB"
     \new GrandStaff <<
       \set GrandStaff.autoBeaming = ##f
       \set GrandStaff.instrumentName = \markup \center-column {
@@ -84,12 +85,12 @@ s2*15/4
         }
       >>
     >>
-    \context Lyrics {
+    \context Lyrics = "chantLyricsA" {
       \lyricsto chant {
       \chantTextA
     }
     }
-    \new Lyrics \lyricsto chant {
+    \context Lyrics = "chantLyricsB" \lyricsto chant {
       \chantTextB
     }
   >>

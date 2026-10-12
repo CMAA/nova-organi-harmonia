@@ -72,6 +72,7 @@ voiceLines = {
 
 \score{
   <<
+    \new Lyrics
     \new GrandStaff <<
       \set GrandStaff.autoBeaming = ##f
       \set GrandStaff.instrumentName = \markup \center-column {
@@ -100,7 +101,7 @@ voiceLines = {
         }
       >>
     >>
-    \new Lyrics \lyricsto chant {
+    \context Lyrics \lyricsto chant {
       \chantText
     }
   >>
