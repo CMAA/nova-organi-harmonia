@@ -98,7 +98,9 @@ shiftRightB = { \once \override NoteColumn #'force-hshift = #1.6 }
   \context {
     \Lyrics
     \with { alignAboveContext = "up" }
-    \override VerticalAxisGroup.nonstaff-relatedstaff-spacing #'minimum-distance = #4
+    \override VerticalAxisGroup.nonstaff-relatedstaff-spacing = #'(
+      (minimum-distance . 4)
+    )
     \override LyricText #'font-size = #-1
   }
 }
