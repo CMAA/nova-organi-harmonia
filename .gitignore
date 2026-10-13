@@ -1,2 +1,5 @@
 *.pdf
 *.ps
+*.aux
+*.log
+out
