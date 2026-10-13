@@ -107,7 +107,7 @@ tenorMusic = {
 a2*5/2 ~ \divisioMinima
 a4 ~ a2*6/2 b2*5/2 a4 ~ \divisioMaior
 a2 ~ a2*6/2 ~ a2 ~ a2*3/2 \divisioMinima
-gg2 fis2*3/2 ~ fis2*4/2 ~ fis2*9/4 ~ fis2*3/2 ~ fis2*3/2 b2 a4 ~ \divisioMaxima
+g2 fis2*3/2 ~ fis2*4/2 ~ fis2*9/4 ~ fis2*3/2 ~ fis2*3/2 b2 a4 ~ \divisioMaxima
 a2*6/2 ~ a2*7/2 b2*3/2 ~ \divisioMinima
 b2 fis2*3/2 ~ fis2*5/2 ~ fis2*3/2 ~ fis2*5/2 ~ fis2*3/2 \divisioMaxima
 a2*3/2 ~ a2*4/2 gis2 fis2 ~ fis2 ~ fis2*6/2 \divisioMinima

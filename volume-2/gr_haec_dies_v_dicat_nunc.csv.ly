@@ -121,7 +121,7 @@ a,2 ~ a,2 b,2 cis2 ~ cis2*4/2 \divisioMinima
 d2 ~ d2*4/2 fis2*7/4 ~ fis2*3/2 ~ fis2*3/4 ~ fis2*3/2 \divisioMinima
 cis2*5/2 b,2 fis2 \finalis
 r2*25/4 b2*4/2 a2*4/2 ~ a2*4/2 b2*3/2 ~ b2*3/2 \divisioMaxima
-r2*15/4 cis'2*4/2 b2*3/4 ~ b2*3/2 'a2 a2*6/2 gis4 ~ \divisioMinima
+r2*15/4 cis'2*4/2 b2*3/4 ~ b2*3/2 a2 a2*6/2 gis4 ~ \divisioMinima
 gis2*3/4 fis2*3/2 ~ fis2*3/2 ~ fis2*3/2 ~ fis2 ~ fis4 \divisioMaxima
 cis2*6/2 ~ cis2 ~ cis2*5/2 ~ cis2*3/2 \divisioMinima
 d2 ~ d2*3/2 ~ d4 cis2*5/2 b,2*3/2 cis2*5/2 fis2*3/2 \divisioMaxima

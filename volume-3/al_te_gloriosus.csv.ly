@@ -44,8 +44,8 @@ lau -- _ _ _ _ dat,
 \set stanza = " * " Dó -- _ _ mi -- ne. _ _ _ _ }
 
 chantMusic = {
-\tieDown   ees'4 ( f'4) g'4 ( aes'4 bes'4 c''4) ~ c''4 ( bes'4) bes'4 ( d''4 ees''4 c''4) d''4 ( \tiny c'' bes' 4) bes'4 \divisioMaior
-  ees'4 ( f'4) g'4 ( aes'4 bes'4 c''4) ~ c''4 ( bes'4) bes'4 ( d''4 ees''4 c''4) d''4 ( \tiny c'' bes' \normal) bes'4 \divisioMaior
+\tieDown   ees'4 ( f'4) g'4 ( aes'4 bes'4 c''4) ~ c''4 ( bes'4) bes'4 ( d''4 ees''4 c''4) d''4 ( \once \tweak #'font-size #-4 c''4 \once \tweak #'font-size #-4 bes'4) bes'4 \divisioMaior
+  ees'4 ( f'4) g'4 ( aes'4 bes'4 c''4) ~ c''4 ( bes'4) bes'4 ( d''4 ees''4 c''4) d''4 ( \once \tweak #'font-size #-4 c''4 \once \tweak #'font-size #-4 bes'4) bes'4 \divisioMaior
  bes'4 ( c''4) d''4 ( ees''4 c''4.) ees''4 ( d''4 c''4 bes'4.) aes'4 ( c''4 aes'4 bes'4.) g'4 ( bes'4 aes'4 g'4 f'4 ees'4) \divisioMinima
  ees'4 ( f'4 g'4 aes'4 bes'4 c''4) ~ c''4 ( bes'4 aes'4 f'4) g'4 ( f'4) ~ f'4 ( ees'4) \finalis
  ees'4 ( f'4) aes'4 g'4 aes'4 ( bes'4) bes'4 ( aes'4 g'4 f'4) aes'4 ( bes'4 c''4) ~ c''4 ( bes'4) \divisioMinima
@@ -72,7 +72,7 @@ ees'2 ~ ees'2*3/2 ~ ees'2*3/2 ~ ees'2*4/2 ~ ees'2*3/2 d'4 r2 bes2*3/2 ~ bes2*3/2
 bes2 ~ bes2*7/4 ~ bes2*9/4 c'2*9/4 bes2*5/2 c'4 ~ \divisioMinima
 c'2*5/2 ~ c'2*6/2 aes2 g4 \finalis
 c'2*4/2 ~ c'2 ~ c'2*4/2 ~ c'2 bes2*3/2 ~ \divisioMinima
-bes4 ~ bes2 aes2 f2*3/2 fd2*4/2 aes2*3/2 g4 \divisioMaxima
+bes4 ~ bes2 aes2 f2*3/2 ~ f2*4/2 aes2*3/2 g4 \divisioMaxima
 f'2*3/2 ~ f'2*7/4 ees'2*4/2 ~ ees'2 d'4 ~ \divisioMinima
 d'2 c'2*7/4 bes2*4/2 c'2*4/2 bes2*5/2 g4 ~ \divisioMinima
 g2*5/2 ees2*6/2 f2 g4 \finalis

@@ -103,7 +103,7 @@ d4 a2*3/2 f2*7/4 ~ f2 a2*4/2 g2*9/4 ~ g2 f2*7/4 ~ f2*3/2 ~ f2*4/2 a2*3/2 d2 ~ d2
 }
 
 bassMusic = {
-d2*3/2 ~ d2*7/4 ~ d2*3/2 ~ d2 ~ d2*7/4 ~ d2*9/4 ~ d2*3/2 a.2 a,2*3/4 \divisioMinima
+d2*3/2 ~ d2*7/4 ~ d2*3/2 ~ d2 ~ d2*7/4 ~ d2*9/4 ~ d2*3/2 a,2 a,2*3/4 \divisioMinima
 c2*4/2 bes,2 ~ bes,4 d2 ~ d4 \divisioMaior
 a,2*3/2 bes,2 c2*3/2 d2 ~ d4 ~ d2*9/4 a,2*4/2 ~ a,2*4/2 c2*3/2 \divisioMaxima
 e4 c2*3/2 b,2 a,2*6/2 c2*3/2 ~ \divisioMaior
